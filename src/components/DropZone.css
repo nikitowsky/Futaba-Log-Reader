@@ -1,12 +1,7 @@
-.drop-zone .zone {
-    display: none;
-}
-
-.drop-zone.active .zone {
+.zone {
     display: flex;
     justify-content: center;
     align-items: center;
-
     background: rgba(255, 255, 255, 0.5);
     border: 20px dashed var(--primaryColor);
     position: fixed;
@@ -15,4 +10,8 @@
     bottom: 0;
     right: 0;
     z-index: 5000;
+}
+
+.upload {
+    pointer-events: none;
 }

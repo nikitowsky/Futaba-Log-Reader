@@ -32,21 +32,30 @@ export const DropZone: React.FC<React.PropsWithChildren> = ({ children }) => {
         setIsActive(true);
     };
 
+    const handleDragLeave = (event: React.DragEvent<HTMLDivElement>) => {
+        event.preventDefault();
+        event.stopPropagation();
+        setIsActive(false);
+    };
+
     return (
-        <div
-            className={`drop-zone ${isActive ? 'active' : ''}`}
-            onDragEnter={handleDragOver}
-            onDragLeave={() => setIsActive(false)}
-            onDragOver={handleDragOver}
-        >
+        <div onDragEnter={handleDragOver}>
             {children}
-            <div
-                className="zone"
-                onDrop={handleDrop}
-                onDragOver={handleDragOver}
-            >
-                <img src="upload.gif" alt="Futaba Hacking" />
-            </div>
+            {isActive && (
+                <div
+                    className="zone"
+                    onDrop={handleDrop}
+                    onDragLeave={handleDragLeave}
+                    onDragOver={handleDragOver}
+                >
+                    <img
+                        onDragOver={handleDragOver}
+                        className="upload"
+                        src={process.env.PUBLIC_URL + '/upload.gif'}
+                        alt="Futaba Hacking"
+                    />
+                </div>
+            )}
         </div>
     );
 };
