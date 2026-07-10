@@ -49,7 +49,6 @@ export const DropZone: React.FC<React.PropsWithChildren> = ({ children }) => {
                     onDragOver={handleDragOver}
                 >
                     <img
-                        onDragOver={handleDragOver}
                         className="upload"
                         src={process.env.PUBLIC_URL + '/upload.gif'}
                         alt="Futaba Hacking"
